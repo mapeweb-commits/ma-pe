@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Shippori+Mincho:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap');
+
+:root {
+  --bg-color: #F5F2EE;
+  --text-main: #2A2622;
+  --text-sub: #888078;
+  --accent: #C47F5B;
+  --white: #FFFFFF;
+
+  --font-serif: 'Shippori Mincho', serif;
+  --font-sans: 'Zen Kaku Gothic New', sans-serif;
+  --font-rounded: 'M PLUS Rounded 1c', sans-serif;
+
+  --sidebar-width: 280px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.9;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-rounded);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.4s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* Layout System */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar Navigation (PC) */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 60px 40px;
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 50;
+  background-color: var(--bg-color);
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  position: relative;
+}
+
+/* Components */
+.logo {
+  font-family: var(--font-rounded);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.nav-item {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  position: relative;
+  display: inline-block;
+  color: var(--text-main);
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 1px;
+  background-color: var(--text-main);
+}
+
+.cta-btn {
+  display: block;
+  text-align: center;
+  border: 1px solid var(--text-main);
+  padding: 16px;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: var(--text-main);
+  color: var(--white);
+}
+
+/* Sections */
+.section-wrapper {
+  padding: 120px 8%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.full-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Typography Utilities */
+.txt-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.2em;
+}
+
+.heading-xxl {
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-right: none;
+    border-bottom: none;
+    flex-direction: row;
+    align-items: center;
+    background-color: transparent;
+    z-index: 100;
+  }
+
+  .nav-menu,
+  .desktop-only {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .section-wrapper {
+    padding: 80px 24px;
+  }
+
+  .heading-xxl {
+    font-size: 2.2rem;
+  }
+
+  /* Mobile Menu Button styles would go here */
+}
+
+/* Components for Content */
+.number-list {
+  counter-reset: num;
+}
+
+.number-item {
+  padding: 40px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: flex-start;
+}
+
+.number-item::before {
+  counter-increment: num;
+  content: "0" counter(num);
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.feature-card {
+  padding: 40px;
+  background-color: var(--white);
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.05);
+}
+
+/* Floating CTA for Mobile */
+.floating-cta {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 999;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  display: none;
+  /* Hidden by default (desktop) */
+}
+
+.floating-cta.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.floating-cta-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background-color: var(--text-main);
+  color: var(--white);
+  text-align: center;
+  font-weight: 700;
+  border-radius: 50px;
+  box-shadow: 0 10px 20px rgba(42, 38, 34, 0.2);
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .floating-cta {
+    display: block;
+  }
+}
+
+/* Accordion */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-item:has(> button[aria-expanded="true"]) .accordion-content {
+  /* Only works in modern browsers, fallback handled via JS class if needed, but JS logic sets class 'open' anyway */
+}
+
+/* We rely on JS adding 'open' class for height animation usually, or just conditional rendering in React. 
+   However, the current React code does conditional rendering which doesn't animate well, 
+   OR it uses a class 'open' but we didn't define styles for it. 
+   Let's fix the React component to use max-height transition or just simple display toggling if we want it to just 'work'.
+   Given 'toggle not functioning' likely means content is hidden even when open because styles are missing. */
+
+.accordion-content.open {
+  max-height: 500px;
+  /* Arbitrary large number for now, or use JS to set scrollHeight */
+  transition: max-height 0.4s ease-in;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  z-index: 10;
+}
+
+.scroll-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background-color: rgba(42, 38, 34, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--text-main);
+  animation: scrollDown 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
