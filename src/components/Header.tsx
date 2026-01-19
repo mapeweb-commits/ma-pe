@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
         <div>
           <Link to="/" className="logo">
             <img
-              src="/images/ma-pe_logo_final.png"
+              src={`${import.meta.env.BASE_URL}images/ma-pe_logo_final.png`}
               alt="まーぺ"
               width="120"
               style={{ display: 'block', marginBottom: '8px' }}

@@ -43,7 +43,7 @@ export const Home: React.FC = () => {
                     pointerEvents: 'none'
                 }}>
                     <img
-                        src="/images/hero.png"
+                        src={`${import.meta.env.BASE_URL}images/hero.png`}
                         alt="Background"
                         style={{
                             width: '100%',
@@ -102,17 +102,17 @@ export const Home: React.FC = () => {
                     <div className="feature-grid">
                         {[
                             {
-                                icon: <img src="/images/icon_signboard.png" alt="看板" width="60" height="60" style={{ mixBlendMode: 'multiply' }} />,
+                                icon: <img src={`${import.meta.env.BASE_URL}images/icon_signboard.png`} alt="看板" width="60" height="60" style={{ mixBlendMode: 'multiply' }} />,
                                 title: "見やすい",
                                 desc: "シンプルな“看板”として動き続けます。"
                             },
                             {
-                                icon: <img src="/images/icon_feather.png" alt="軽量" width="60" height="60" style={{ mixBlendMode: 'multiply' }} />,
+                                icon: <img src={`${import.meta.env.BASE_URL}images/icon_feather.png`} alt="軽量" width="60" height="60" style={{ mixBlendMode: 'multiply' }} />,
                                 title: "軽い",
                                 desc: "スマホでもすぐ開く、ストレスのないページに整えます。"
                             },
                             {
-                                icon: <img src="/images/icon_cactus.png" alt="維持" width="72" height="72" style={{ mixBlendMode: 'multiply' }} />,
+                                icon: <img src={`${import.meta.env.BASE_URL}images/icon_cactus.png`} alt="維持" width="72" height="72" style={{ mixBlendMode: 'multiply' }} />,
                                 title: "維持がラク",
                                 desc: "更新しなくても困らない形にまとめます。"
                             }
