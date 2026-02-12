@@ -4,7 +4,7 @@
   --bg-color: #F5F2EE;
   --text-main: #2A2622;
   --text-sub: #888078;
-  --accent: #C47F5B;
+  --accent: #D09166;
   --white: #FFFFFF;
 
   --font-serif: 'Shippori Mincho', serif;
@@ -19,6 +19,19 @@
   margin: 0;
   padding: 0;
 }
+
+/* Visibility Utilities */
+.mobile-only {
+  display: none !important;
+  /* Hidden on desktop by default */
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block !important;
+  }
+}
+
 
 body {
   background-color: var(--bg-color);
@@ -68,7 +81,7 @@ a:hover {
   flex-direction: column;
   justify-content: space-between;
   z-index: 50;
-  background-color: var(--bg-color);
+  background-color: #FDFBF8;
 }
 
 .main-content {
@@ -137,7 +150,12 @@ a:hover {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 120px;
+}
+
+.section-wrapper.full-screen {
+  padding-bottom: 0;
 }
 
 /* Typography Utilities */
@@ -184,6 +202,10 @@ a:hover {
     display: none;
   }
 
+  .sidebar .logo {
+    display: none;
+  }
+
   .main-content {
     margin-left: 0;
     width: 100%;
@@ -195,6 +217,20 @@ a:hover {
 
   .heading-xxl {
     font-size: 2.2rem;
+  }
+
+  .section-wrapper.full-screen {
+    padding-bottom: 0;
+    padding-top: 40px;
+  }
+
+  .full-screen {
+    padding-top: 60px;
+    min-height: auto;
+  }
+
+  .scroll-indicator {
+    display: none;
   }
 
   /* Mobile Menu Button styles would go here */
@@ -279,9 +315,7 @@ a:hover {
   transition: max-height 0.3s ease-out;
 }
 
-.accordion-item:has(> button[aria-expanded="true"]) .accordion-content {
-  /* Only works in modern browsers, fallback handled via JS class if needed, but JS logic sets class 'open' anyway */
-}
+
 
 /* We rely on JS adding 'open' class for height animation usually, or just conditional rendering in React. 
    However, the current React code does conditional rendering which doesn't animate well, 
@@ -343,4 +377,69 @@ a:hover {
   100% {
     transform: translateY(100%);
   }
+}
+
+/* Hero Section Specifics */
+.hero-image-container {
+  position: absolute;
+  bottom: 0;
+  right: -5%;
+  width: 60vw;
+  max-width: 1000px;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  max-height: 85vh;
+  object-fit: contain;
+  opacity: 1;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hero-image-container {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .hero-image {
+    max-height: none;
+    margin-bottom: 0;
+  }
+
+  /* Adjust content wrapper to be simpler on mobile */
+  .hero-content-wrapper {
+    max-width: 100% !important;
+  }
+}
+
+/* Footer */
+.footer {
+  background-color: var(--accent);
+  color: var(--white);
+  padding: 60px 0;
+}
+
+.footer .text-sub {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.footer a {
+  color: var(--white);
+}
+
+.footer .logo {
+  color: var(--white);
 }

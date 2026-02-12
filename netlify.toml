@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NETLIFY = "true"
+
+# SPA (Single Page Application) のルーティング対応
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

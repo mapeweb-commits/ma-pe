@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
                         <span style={{ cursor: 'not-allowed', opacity: 0.5 }}>特定商取引法に基づく表記</span>
                         <span style={{ cursor: 'not-allowed', opacity: 0.5 }}>プライバシーポリシー</span>
                     </div>
-                    <p>© ma-pe. All Rights Reserved.</p>
+                    <p>Copyright © ma-pe. All Rights Reserved.</p>
                 </div>
             </div>
         </footer>

@@ -68,7 +68,7 @@ export const Service: React.FC = () => {
                     <div className="feature-card" style={{ borderTop: '4px solid var(--accent)' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
                             <div className="icon-circle"><Check size={20} /></div>
-                            <h2 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-serif)' }}>対応できること</h2>
+                            <h2 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-rounded)', fontWeight: 'bold' }}>対応できること</h2>
                         </div>
                         <ul className="number-list">
                             {[
@@ -88,7 +88,7 @@ export const Service: React.FC = () => {
                     <div className="feature-card" style={{ backgroundColor: 'rgba(255,255,255,0.5)', border: '1px dashed #ccc' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
                             <div className="icon-circle"><X size={20} color="var(--text-sub)" /></div>
-                            <h2 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-serif)', color: 'var(--text-sub)' }}>対応しないこと</h2>
+                            <h2 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-rounded)', fontWeight: 'bold', color: 'var(--text-sub)' }}>対応しないこと</h2>
                         </div>
                         <ul style={{ listStyle: 'none' }}>
                             {[
@@ -105,7 +105,7 @@ export const Service: React.FC = () => {
                         </ul>
                         <div style={{ marginTop: '2rem' }}>
                             <p style={{ fontSize: '0.8rem', color: 'var(--text-sub)' }}>
-                                ※今は“シンプルな看板作り”に集中するため、機能のある仕組みは扱っていません。
+                                ※“シンプルな看板作り”に集中するため、機能のある仕組みは扱っていません。
                             </p>
                         </div>
                     </div>
@@ -164,7 +164,7 @@ export const Service: React.FC = () => {
                                     {step.num}
                                 </div>
                                 <div style={{ paddingTop: '10px' }}>
-                                    <h3 style={{ marginBottom: '10px', fontSize: '1.4rem', fontFamily: 'var(--font-serif)' }}>{step.name}</h3>
+                                    <h3 style={{ marginBottom: '10px', fontSize: '1.4rem', fontFamily: 'var(--font-rounded)' }}>{step.name}</h3>
                                     <p style={{ color: 'var(--text-sub)', lineHeight: 1.8 }}>{step.desc}</p>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@ export const Service: React.FC = () => {
                             display: 'flex',
                             flexDirection: 'column'
                         }}>
-                            <h3 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-serif)', marginBottom: '1rem', textAlign: 'center' }}>{plan.name}</h3>
+                            <h3 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-rounded)', marginBottom: '1rem', textAlign: 'center' }}>{plan.name}</h3>
                             <div style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem', color: 'var(--text-main)' }}>
                                 <span style={{ fontSize: '1rem', fontWeight: 400, marginRight: '4px' }}>¥</span>{plan.price}
                             </div>
@@ -205,7 +205,7 @@ export const Service: React.FC = () => {
                 </div>
 
                 <div style={{ marginTop: '60px', backgroundColor: 'rgba(235, 229, 221, 0.5)', padding: '40px', borderRadius: '8px' }}>
-                    <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.2rem', marginBottom: '20px', textAlign: 'center' }}>共通の前提</h3>
+                    <h3 style={{ fontFamily: 'var(--font-rounded)', fontSize: '1.2rem', marginBottom: '20px', textAlign: 'center' }}>共通の前提</h3>
                     <div className="split-2" style={{ gap: '20px' }}>
                         <ul style={{ listStyle: 'none', fontSize: '0.95rem' }}>
                             <li style={{ marginBottom: '8px' }}>・ドメイン・サーバーは依頼者名義</li>

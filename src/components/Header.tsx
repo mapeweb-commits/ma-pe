@@ -40,7 +40,7 @@ export const Header: React.FC = () => {
               className={`nav-item ${location.pathname === item.path ? 'active' : ''}`}
               style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}
             >
-              <span style={{ fontSize: '1.2rem', fontFamily: 'var(--font-serif)' }}>{item.label}</span>
+              <span style={{ fontSize: '1.2rem', fontFamily: "'Zen Kaku Gothic New', sans-serif", letterSpacing: '0.2em', fontWeight: 300 }}>{item.label}</span>
               <span style={{ fontSize: '0.75rem', color: 'var(--text-sub)', marginTop: '4px' }}>{item.jaLabel}</span>
             </Link>
           ))}
@@ -56,7 +56,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="mobile-menu-btn md:hidden" onClick={toggleMenu} style={{ position: 'absolute', right: '20px', top: '24px' }}>
+        <button className="mobile-menu-btn md:hidden" onClick={toggleMenu} style={{ position: 'absolute', right: '20px', top: '24px', background: 'transparent', border: 'none', cursor: 'pointer' }}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </aside>
@@ -64,10 +64,10 @@ export const Header: React.FC = () => {
       {/* Mobile Nav Overlay */}
       {isMenuOpen && (
         <div style={{
-          position: 'fixed', inset: 0, backgroundColor: '#F5F2EE', zIndex: 100,
+          position: 'fixed', inset: 0, backgroundColor: '#FDFBF8', zIndex: 100,
           display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}>
-          <button onClick={toggleMenu} style={{ position: 'absolute', top: '24px', right: '24px' }}>
+          <button onClick={toggleMenu} style={{ position: 'absolute', top: '24px', right: '24px', background: 'transparent', border: 'none', cursor: 'pointer' }}>
             <X size={32} />
           </button>
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '30px', textAlign: 'center' }}>
@@ -78,7 +78,7 @@ export const Header: React.FC = () => {
                 onClick={toggleMenu}
                 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
               >
-                <span style={{ fontFamily: "'Shippori Mincho', serif", fontSize: '1.5rem', fontWeight: 700 }}>{item.label}</span>
+                <span style={{ fontFamily: "'Zen Kaku Gothic New', sans-serif", fontSize: '1.5rem', letterSpacing: '0.2em', fontWeight: 300 }}>{item.label}</span>
                 <span style={{ fontSize: '0.9rem', color: '#666', marginTop: '4px' }}>{item.jaLabel}</span>
               </Link>
             ))}

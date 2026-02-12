@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Accordion } from '../components/Accordion';
 
 export const Home: React.FC = () => {
+    const [isProblemsVisible, setIsProblemsVisible] = useState(false);
+    const problemsRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsProblemsVisible(true);
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (problemsRef.current) {
+            observer.observe(problemsRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <>
             {/* Hero Section */}
             <section className="section-wrapper full-screen" style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#FDFBF8' }}>
-                <div style={{ maxWidth: '800px', position: 'relative', zIndex: 10 }}>
+                <div className="hero-content-wrapper" style={{ maxWidth: '800px', position: 'relative', zIndex: 10 }}>
                     <p style={{
                         letterSpacing: '0.2em',
                         marginBottom: '20px',
@@ -23,35 +43,26 @@ export const Home: React.FC = () => {
                         <span style={{ display: 'block', marginLeft: '0.5em' }}>ホームページ、</span>
                         <span style={{ display: 'block', color: 'var(--accent)' }}>作り直します。</span>
                     </h1>
-                    <p className="text-justify" style={{ maxWidth: '500px', marginTop: '40px', fontSize: '1.1rem', lineHeight: 2.2 }}>
-                        <span style={{ background: 'linear-gradient(transparent 30%, #E5E3DF 30%)', padding: '0 4px', boxDecorationBreak: 'clone' }}>地方の個人店向け。</span><br />
-                        <span style={{ background: 'linear-gradient(transparent 30%, #E5E3DF 30%)', padding: '0 4px', boxDecorationBreak: 'clone' }}>AIの時代だからこそ、お店には</span><br />
-                        <span style={{ background: 'linear-gradient(transparent 30%, #E5E3DF 30%)', padding: '0 4px', boxDecorationBreak: 'clone' }}>“ちゃんとした居場所”が必要です。</span><br />
-                        <span style={{ background: 'linear-gradient(transparent 30%, #E5E3DF 30%)', padding: '0 4px', boxDecorationBreak: 'clone' }}>必要な情報だけを整えて、</span><br />
-                        <span style={{ background: 'linear-gradient(transparent 30%, #E5E3DF 30%)', padding: '0 4px', boxDecorationBreak: 'clone' }}>ちゃんと伝わる形にします。</span>
-                    </p>
+
+                    {/* PC Only Text */}
+                    <div className="desktop-only">
+                        <p className="text-justify" style={{ maxWidth: '500px', marginTop: '40px', fontSize: '1.1rem', lineHeight: 2.2 }}>
+                            <span style={{ background: 'linear-gradient(transparent 30%, #E5E3DF 30%)', padding: '0 4px', boxDecorationBreak: 'clone' }}>地方の個人店向け。</span><br />
+                            <span style={{ background: 'linear-gradient(transparent 30%, #E5E3DF 30%)', padding: '0 4px', boxDecorationBreak: 'clone' }}>AIの時代だからこそ、お店には</span><br />
+                            <span style={{ background: 'linear-gradient(transparent 30%, #E5E3DF 30%)', padding: '0 4px', boxDecorationBreak: 'clone' }}>“ちゃんとした居場所”が必要です。</span><br />
+                            <span style={{ background: 'linear-gradient(transparent 30%, #E5E3DF 30%)', padding: '0 4px', boxDecorationBreak: 'clone' }}>必要な情報だけを整えて、</span><br />
+                            <span style={{ background: 'linear-gradient(transparent 30%, #E5E3DF 30%)', padding: '0 4px', boxDecorationBreak: 'clone' }}>ちゃんと伝わる形にします。</span>
+                        </p>
+                    </div>
+
                 </div>
 
                 {/* Hero Image */}
-                <div style={{
-                    position: 'absolute',
-                    top: '15%',
-                    right: 0,
-                    width: '60vw',
-                    height: '80vh',
-                    zIndex: 0,
-                    pointerEvents: 'none'
-                }}>
+                <div className="hero-image-container">
                     <img
-                        src={`${import.meta.env.BASE_URL}images/hero.png`}
+                        src={`${import.meta.env.BASE_URL}images/hero_main.jpg`}
                         alt="Background"
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                            borderTopLeftRadius: '300px',
-                            opacity: 0.9
-                        }}
+                        className="hero-image"
                     />
                 </div>
 
@@ -62,9 +73,27 @@ export const Home: React.FC = () => {
                 </div>
             </section>
 
+            {/* Message Section (Mobile Only) */}
+            <section className="section-wrapper mobile-only" style={{ display: 'flex', justifyContent: 'center', padding: '80px 20px', backgroundColor: '#FDFBF8' }}>
+                <p style={{ fontSize: '1.1rem', lineHeight: '2.0', textAlign: 'center', letterSpacing: '0.05em', fontWeight: 500 }}>
+                    <span style={{ display: 'block', marginBottom: '20px', fontSize: '1.0rem', color: 'var(--accent)' }}>地方の個人店向け。</span>
+                    AIの時代だからこそ、お店には<br />
+                    「ちゃんとした居場所」が必要です。<br />
+                    <span style={{ display: 'block', marginTop: '30px' }}>
+                        必要な情報だけを整えて、<br />
+                        ちゃんと伝わる形にします。
+                    </span>
+                </p>
+            </section>
+
             {/* Problems Section */}
-            {/* Problems Section */}
-            <div style={{ background: 'linear-gradient(to bottom, transparent 70%, #fff 100%)' }}>
+            <div
+                ref={problemsRef}
+                style={{
+                    background: `linear-gradient(to bottom, ${isProblemsVisible ? '#F7EDDA' : 'transparent'} 70%, #fff 100%)`,
+                    transition: 'background 0.8s ease-out'
+                }}
+            >
                 <section className="section-wrapper">
                     <div style={{ display: 'flex', gap: '80px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
                         <div style={{ flex: '0 0 200px' }}>
@@ -124,7 +153,7 @@ export const Home: React.FC = () => {
                                     width: '110px',
                                     height: '110px',
                                     borderRadius: '50%',
-                                    backgroundColor: '#E6DCCA',
+                                    backgroundColor: '#F7EDDA',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyItems: 'center',
@@ -152,7 +181,7 @@ export const Home: React.FC = () => {
                         </Link>
                     </div>
 
-                    <div style={{ backgroundColor: '#EBE5DD', padding: '60px', borderRadius: '4px' }}>
+                    <div style={{ backgroundColor: 'var(--accent)', padding: '60px', borderRadius: '4px', color: 'white' }}>
                         <h2 style={{ fontSize: '1.8rem', marginBottom: '20px' }}>
                             まずは<br />ご相談ください
                         </h2>
@@ -160,7 +189,7 @@ export const Home: React.FC = () => {
                             状況だけ教えていただければ、<br />
                             直すべきポイントを整理します。
                         </p>
-                        <Link to="/contact" className="cta-btn" style={{ display: 'inline-block', backgroundColor: 'var(--text-main)', color: 'white', padding: '16px 60px' }}>
+                        <Link to="/contact" className="cta-btn" style={{ display: 'inline-block', backgroundColor: 'white', color: 'var(--accent)', padding: '16px 60px', border: 'none' }}>
                             無料で相談する
                         </Link>
                     </div>
