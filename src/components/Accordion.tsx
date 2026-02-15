@@ -15,11 +15,11 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({ question, answer }
                 className="accordion-trigger w-full text-left"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-expanded={isOpen}
-                style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', padding: '1.25rem 0', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', padding: '1.25rem 0', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: 'var(--text-main)' }}
             >
                 <span style={{ fontSize: '1.1rem', fontWeight: 600, fontFamily: 'var(--font-sans)', paddingRight: '1rem', display: 'block' }}>{question}</span>
                 {isOpen ? (
-                    <ChevronUp className="text-[var(--color-accent)]" size={24} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
+                    <ChevronUp className="text-[var(--accent)]" size={24} style={{ color: 'var(--accent)', flexShrink: 0 }} />
                 ) : (
                     <ChevronDown className="text-[#D0C8C0]" size={24} style={{ color: '#D0C8C0', flexShrink: 0 }} />
                 )}

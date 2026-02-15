@@ -56,7 +56,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="mobile-menu-btn md:hidden" onClick={toggleMenu} style={{ position: 'absolute', right: '20px', top: '24px', background: 'transparent', border: 'none', cursor: 'pointer' }}>
+        <button className="mobile-menu-btn md:hidden" onClick={toggleMenu} style={{ position: 'absolute', right: '20px', top: '24px', background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-main)' }}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </aside>
@@ -67,7 +67,7 @@ export const Header: React.FC = () => {
           position: 'fixed', inset: 0, backgroundColor: '#FDFBF8', zIndex: 100,
           display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}>
-          <button onClick={toggleMenu} style={{ position: 'absolute', top: '24px', right: '24px', background: 'transparent', border: 'none', cursor: 'pointer' }}>
+          <button onClick={toggleMenu} style={{ position: 'absolute', top: '24px', right: '24px', background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-main)' }}>
             <X size={32} />
           </button>
           <nav style={{ display: 'flex', flexDirection: 'column', gap: '30px', textAlign: 'center' }}>

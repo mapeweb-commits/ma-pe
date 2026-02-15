@@ -27,7 +27,7 @@ export const Sample: React.FC = () => {
     ];
 
     return (
-        <>
+        <div style={{ backgroundColor: '#FDFBF8' }}>
             <section className="section text-center" style={{ paddingTop: '120px', paddingBottom: '60px' }}>
                 <div className="container">
                     <h1 className="heading-lg">制作例（サンプル）</h1>
@@ -36,14 +36,14 @@ export const Sample: React.FC = () => {
 
             <section className="section" style={{ paddingBottom: '120px' }}>
                 <div className="container">
-                    <div className="grid-3 mb-lg">
+                    <div className="feature-grid" style={{ marginBottom: '60px' }}>
                         {works.map((work, i) => (
-                            <div key={i} className="card" style={{ padding: 0, overflow: 'hidden' }}>
+                            <div key={i} className="card" style={{ padding: 0, overflow: 'hidden', backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.04)' }}>
                                 <div className="work-thumbnail">
                                     <img
                                         src={work.img}
                                         alt={`${work.industry}の制作例`}
-                                        className="work-img"
+                                        style={{ width: '100%', height: 'auto', display: 'block' }}
                                     />
                                 </div>
                                 <div style={{ padding: '1.5rem' }}>
@@ -67,6 +67,6 @@ export const Sample: React.FC = () => {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     );
 };

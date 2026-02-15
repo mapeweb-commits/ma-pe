@@ -3,11 +3,10 @@ import { ExternalLink } from 'lucide-react';
 
 export const Contact: React.FC = () => {
     return (
-        <>
+        <div style={{ backgroundColor: '#FDFBF8' }}>
             <section className="section text-center" style={{ paddingTop: '120px', paddingBottom: '40px' }}>
                 <div className="container">
                     <h1 className="heading-lg">無料相談</h1>
-                    <p className="text-sub">まずは状況だけでOKです。</p>
                 </div>
             </section>
 
@@ -15,8 +14,8 @@ export const Contact: React.FC = () => {
                 <div className="container" style={{ maxWidth: '700px', textAlign: 'center' }}>
                     <div className="card" style={{ padding: '60px 40px' }}>
                         <p style={{ marginBottom: '40px', lineHeight: '2' }}>
-                            まずは以下の「事前アンケート」にご協力ください。<br />
-                            内容を確認のうえ、2〜3日以内にご返信いたします。
+                            まずは以下のお問い合わせフォームまたはLINEよりお気軽にご連絡ください。<br />
+                            内容を確認のうえ、折り返しご返信いたします。
                         </p>
 
                         <a
@@ -34,11 +33,39 @@ export const Contact: React.FC = () => {
                                 padding: '20px 60px',
                                 fontSize: '1.1rem',
                                 borderRadius: '50px',
-                                maxWidth: '100%',
-                                textDecoration: 'none'
+                                maxWidth: '400px',
+                                textDecoration: 'none',
+                                width: '100%',
+                                border: 'none'
                             }}
                         >
-                            事前アンケートに回答する
+                            お問い合わせフォームへ
+                            <ExternalLink size={18} />
+                        </a>
+
+                        <a
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="cta-btn"
+                            style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '10px',
+                                backgroundColor: '#06C755',
+                                color: 'white',
+                                padding: '20px 60px',
+                                fontSize: '1.1rem',
+                                borderRadius: '50px',
+                                maxWidth: '400px',
+                                textDecoration: 'none',
+                                marginTop: '20px',
+                                width: '100%',
+                                border: 'none'
+                            }}
+                        >
+                            LINE公式アカウントへ
                             <ExternalLink size={18} />
                         </a>
 
@@ -48,6 +75,6 @@ export const Contact: React.FC = () => {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     );
 };
