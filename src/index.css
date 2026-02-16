@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Shippori+Mincho:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap');
 
 :root {
-  --bg-color: #FDFBF8;
+  --bg-color: #FAF5E4;
   --text-main: #432F2F;
   --text-sub: #888078;
   --accent: #e4854c;
@@ -81,7 +81,7 @@ a:hover {
   flex-direction: column;
   justify-content: space-between;
   z-index: 50;
-  background-color: #FDFBF8;
+  background-color: #FFFFFF;
 }
 
 .main-content {
@@ -611,8 +611,33 @@ a:hover {
   height: 5vw;
   min-height: 60px;
   background-color: var(--bg-color);
-  /* #FDFBF8 */
+  /* #FAF5E4 */
   clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.problems-section-slanted {
+  position: relative;
+  background-color: transparent;
+  transition: background-color 0.8s ease-out;
+  padding-bottom: 5vw;
+}
+
+.problems-section-slanted.is-active {
+  background-color: #FFF8D7;
+}
+
+.problems-section-slanted::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5vw;
+  min-height: 60px;
+  background-color: #FFFFFF;
+  clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
   pointer-events: none;
   z-index: 1;
 }

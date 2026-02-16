@@ -53,7 +53,7 @@ export const Service: React.FC = () => {
 
     return (
         <>
-            <div style={{ backgroundColor: '#FDFBF8' }} className="diagonal-separator-white">
+            <div style={{ backgroundColor: '#FAF5E4' }} className="diagonal-separator-white">
                 <section className="section-wrapper full-screen" style={{ minHeight: '60vh', paddingBottom: 0 }}>
                     <div style={{ maxWidth: '800px' }}>
                         <p style={{ letterSpacing: '0.2em', marginBottom: '20px', color: 'var(--accent)', fontSize: '0.9rem', fontWeight: 700 }}>SERVICE</p>
@@ -195,7 +195,7 @@ export const Service: React.FC = () => {
             </div>
 
             {/* Pricing */}
-            <div style={{ backgroundColor: '#FDFBF8' }} className="diagonal-separator-white">
+            <div style={{ backgroundColor: '#FAF5E4' }} className="diagonal-separator-white">
                 <section className="section-wrapper">
                     <div style={{ textAlign: 'center', marginBottom: '60px' }}>
                         <h2 className="heading-xxl" style={{ fontSize: '2.5rem' }}>料金プラン</h2>
@@ -266,8 +266,8 @@ export const Service: React.FC = () => {
                                             </span>
                                         </div>
                                         <p style={{ fontSize: '0.75rem', marginTop: '10px', color: '#999', textAlign: 'left', lineHeight: '1.6' }}>
-                                            ※アンケートの回答にご協力いただける方が対象です。<br />
-                                            (納品後にフォームをお送りいたします)
+                                            ※本キャンペーンは、お支払い前にアンケートへのご協力に同意していただける方が対象です。<br />
+                                            アンケートのご案内はホームページ公開完了後にお送りします。
                                         </p>
                                     </div>
                                 )}

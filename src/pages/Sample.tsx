@@ -27,7 +27,7 @@ export const Sample: React.FC = () => {
     ];
 
     return (
-        <div style={{ backgroundColor: '#FDFBF8' }}>
+        <div style={{ backgroundColor: '#FFFFFF' }}>
             <section className="section text-center" style={{ paddingTop: '120px', paddingBottom: '60px' }}>
                 <div className="container">
                     <p style={{ letterSpacing: '0.2em', marginBottom: '20px', color: 'var(--accent)', fontSize: '0.9rem', fontWeight: 700 }}>WORKS</p>

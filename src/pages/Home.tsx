@@ -60,7 +60,7 @@ export const Home: React.FC = () => {
     return (
         <>
             {/* Hero Section */}
-            <section className="section-wrapper full-screen" style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#FDFBF8' }}>
+            <section className="section-wrapper full-screen" style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#FFFFFF' }}>
                 <div className="hero-mobile-bg-1"></div>
                 <div className="hero-mobile-bg-2"></div>
                 <div className="hero-content-wrapper" style={{ maxWidth: '800px', position: 'relative', zIndex: 10 }}>
@@ -73,7 +73,7 @@ export const Home: React.FC = () => {
                     }}>
                         MA-PE WEB DEVELOPMENT
                     </p>
-                    <h1 className="heading-xxl" style={{ textShadow: '0 0 20px #FDFBF8, 0 0 10px #FDFBF8, 0 0 5px #FDFBF8' }}>
+                    <h1 className="heading-xxl" style={{ textShadow: '0 0 20px #FFFFFF, 0 0 10px #FFFFFF, 0 0 5px #FFFFFF' }}>
                         <span style={{ display: 'block' }}>デジタルに、</span>
                         <span style={{ display: 'block', marginLeft: '0.5em' }}>お店の看板</span>
                         <span style={{ display: 'block', color: 'var(--accent)' }}>作ります。</span>
@@ -109,7 +109,7 @@ export const Home: React.FC = () => {
             </section>
 
             {/* Message Section (Mobile Only) */}
-            <section className="section-wrapper mobile-only" style={{ display: 'flex', justifyContent: 'center', padding: '80px 20px', backgroundColor: '#FDFBF8' }}>
+            <section className="section-wrapper mobile-only" style={{ display: 'flex', justifyContent: 'center', padding: '80px 20px', backgroundColor: '#FFFFFF' }}>
                 <p style={{ fontSize: '1.1rem', lineHeight: '2.0', textAlign: 'center', letterSpacing: '0.05em', fontWeight: 500 }}>
                     <span style={{ display: 'block', marginBottom: '20px', fontSize: '1.0rem', color: 'var(--accent)' }}>地方の個人店向け。</span>
                     AIの時代だからこそ、お店には<br />
@@ -124,10 +124,7 @@ export const Home: React.FC = () => {
             {/* Problems Section */}
             <div
                 ref={problemsRef}
-                style={{
-                    background: `linear-gradient(to bottom, ${isProblemsVisible ? '#FFF8D7' : 'transparent'} 70%, #fff 100%)`,
-                    transition: 'background 0.8s ease-out'
-                }}
+                className={`problems-section-slanted ${isProblemsVisible ? 'is-active' : ''}`}
             >
                 <section className="section-wrapper">
                     <div className="problems-container">

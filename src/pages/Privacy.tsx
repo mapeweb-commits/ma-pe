@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Privacy: React.FC = () => {
     return (
-        <div style={{ backgroundColor: '#FDFBF8' }}>
+        <div style={{ backgroundColor: '#FFFFFF' }}>
             <section className="section text-center" style={{ paddingTop: '120px', paddingBottom: '60px' }}>
                 <div className="container">
                     <h1 className="heading-lg">プライバシーポリシー</h1>

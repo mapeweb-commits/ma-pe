@@ -64,7 +64,7 @@ export const Header: React.FC = () => {
       {/* Mobile Nav Overlay */}
       {isMenuOpen && (
         <div style={{
-          position: 'fixed', inset: 0, backgroundColor: '#FDFBF8', zIndex: 100,
+          position: 'fixed', inset: 0, backgroundColor: '#FFFFFF', zIndex: 100,
           display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}>
           <button onClick={toggleMenu} style={{ position: 'absolute', top: '24px', right: '24px', background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-main)' }}>
