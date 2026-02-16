@@ -8,13 +8,13 @@ export const Service: React.FC = () => {
         {
             name: "基本料金",
             price: "30,000",
-            features: ["最大5ページ", "文章・写真はご支給", "修正は2回まで", "Googleマップ／SNSリンク等埋め込み"],
+            features: ["最大5ページ", "文章・写真はご支給またはおまかせ", "修正は2回まで", "Googleマップ／SNSリンク等埋め込み"],
             recommend: false
         },
         {
             name: "オプション",
             price: "",
-            features: ["ページ追加", "原稿作成サポート", "画像素材の用意", "（内容は随時更新）"],
+            features: ["ページ追加 (1ページ ¥1,000)", "公開後の軽微な修正 (1回 ¥2,000)", "..."],
             recommend: false
         },
 
@@ -26,7 +26,7 @@ export const Service: React.FC = () => {
             answer: "「Netlify（ネットリファイ）」という、世界中で使われている高機能かつ無料枠のあるホスティングサービスを利用しているためです。（※独自ドメインをご希望の場合のみ、その実費が必要です）"
         },
         {
-            question: "文章や画像が用意できない場合は？",
+            question: "文章や画像が用意できなくても大丈夫ですか？",
             answer: "まずはご相談ください（簡単なヒアリングから作成をお手伝いいたします）。"
         },
         {
@@ -53,7 +53,7 @@ export const Service: React.FC = () => {
 
     return (
         <>
-            <div style={{ backgroundColor: '#FDFBF8' }}>
+            <div style={{ backgroundColor: '#FDFBF8' }} className="diagonal-separator-white">
                 <section className="section-wrapper full-screen" style={{ minHeight: '60vh', paddingBottom: 0 }}>
                     <div style={{ maxWidth: '800px' }}>
                         <p style={{ letterSpacing: '0.2em', marginBottom: '20px', color: 'var(--accent)', fontSize: '0.9rem', fontWeight: 700 }}>SERVICE</p>
@@ -70,13 +70,16 @@ export const Service: React.FC = () => {
                 </section>
 
                 {/* Scope */}
-                <section className="section-wrapper">
-                    <div className="split-2">
+                {/* Scope */}
+                <section className="section-wrapper scope-section" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px' }}>
                         {/* Can Do */}
-                        <div className="feature-card" style={{ borderTop: '4px solid var(--accent)' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                                <div className="icon-circle"><Check size={20} /></div>
-                                <h2 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-rounded)', fontWeight: 'bold' }}>対応できること</h2>
+                        <div>
+                            <div style={{ marginBottom: '2rem', paddingBottom: '10px' }}>
+                                <h2 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-rounded)', fontWeight: 'bold', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <span style={{ display: 'inline-block', width: '8px', height: '24px', backgroundColor: 'var(--accent)', borderRadius: '4px' }}></span>
+                                    対応できること
+                                </h2>
                             </div>
                             <ul className="number-list">
                                 {[
@@ -84,19 +87,21 @@ export const Service: React.FC = () => {
                                     "トップ / メニュー / アクセス / よくある質問 など",
                                     "Googleマップ、電話ボタン、SNSリンクの設置"
                                 ].map((item, i) => (
-                                    <li key={i} style={{ padding: '15px 0', borderBottom: '1px solid rgba(0,0,0,0.05)', display: 'flex', gap: '10px' }}>
-                                        <span style={{ color: 'var(--accent)' }}>●</span>
-                                        {item}
+                                    <li key={i} style={{ padding: '15px 0', display: 'flex', gap: '15px', alignItems: 'flex-start' }}>
+                                        <div style={{ marginTop: '4px', color: 'var(--accent)' }}><Check size={20} strokeWidth={3} /></div>
+                                        <span style={{ fontSize: '1.1rem', lineHeight: 1.6, fontWeight: 500 }}>{item}</span>
                                     </li>
                                 ))}
                             </ul>
                         </div>
 
                         {/* Cannot Do */}
-                        <div className="feature-card" style={{ backgroundColor: 'rgba(255,255,255,0.5)', border: '1px dashed #ccc' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                                <div className="icon-circle"><X size={20} color="var(--text-sub)" /></div>
-                                <h2 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-rounded)', fontWeight: 'bold', color: 'var(--text-sub)' }}>対応しないこと</h2>
+                        <div>
+                            <div style={{ marginBottom: '2rem', paddingBottom: '10px' }}>
+                                <h2 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-rounded)', fontWeight: 'bold', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <span style={{ display: 'inline-block', width: '8px', height: '24px', backgroundColor: '#ddd', borderRadius: '4px' }}></span>
+                                    対応しないこと
+                                </h2>
                             </div>
                             <ul style={{ listStyle: 'none' }}>
                                 {[
@@ -105,15 +110,15 @@ export const Service: React.FC = () => {
                                     "ネットショップ（EC）",
                                     "会員機能"
                                 ].map((item, i) => (
-                                    <li key={i} style={{ padding: '15px 0', borderBottom: '1px solid rgba(0,0,0,0.05)', display: 'flex', gap: '10px', color: 'var(--text-sub)' }}>
-                                        <span>×</span>
-                                        {item}
+                                    <li key={i} style={{ padding: '15px 0', display: 'flex', gap: '15px', alignItems: 'center', color: 'var(--text-main)' }}>
+                                        <div style={{ marginTop: '4px', color: '#ccc' }}><X size={20} /></div>
+                                        <span style={{ fontSize: '1.1rem' }}>{item}</span>
                                     </li>
                                 ))}
                             </ul>
-                            <div style={{ marginTop: '2rem' }}>
-                                <p style={{ fontSize: '0.8rem', color: 'var(--text-sub)' }}>
-                                    ※“シンプルな看板作り”に集中するため、機能のある仕組みは扱っていません。
+                            <div style={{ marginTop: '1.5rem' }}>
+                                <p style={{ fontSize: '0.85rem', color: '#999', lineHeight: '1.8' }}>
+                                    ※“シンプルな看板作り”に集中するため、<br />複雑なシステム開発は対象外となります。
                                 </p>
                             </div>
                         </div>
@@ -122,7 +127,7 @@ export const Service: React.FC = () => {
             </div>
 
             {/* Flow Info */}
-            <div style={{ backgroundColor: '#fff' }}>
+            <div style={{ backgroundColor: '#fff' }} className="diagonal-separator-beige">
                 <section className="section-wrapper">
                     <div style={{ maxWidth: '800px', margin: '0 auto', marginBottom: '80px' }}>
                         <div style={{ textAlign: 'center', marginBottom: '60px' }}>
@@ -134,7 +139,7 @@ export const Service: React.FC = () => {
                                 {
                                     num: "01",
                                     name: "相談",
-                                    desc: "LINEまたはお問い合わせフォームから、ご要望や希望プランを簡単にお知らせください"
+                                    desc: "LINEまたはお問い合わせフォームから、質問や疑問、ご要望を簡単にお知らせください"
                                 },
                                 {
                                     num: "02",
@@ -144,7 +149,7 @@ export const Service: React.FC = () => {
                                 {
                                     num: "03",
                                     name: "ヒアリング",
-                                    desc: "ヒアリングフォーム等にて、営業時間・メニュー・写真など、必要な情報を揃えます"
+                                    desc: "ヒアリングフォームにて、営業時間・メニュー・写真など、必要な情報を揃えます"
                                 },
                                 {
                                     num: "04",
@@ -171,10 +176,10 @@ export const Service: React.FC = () => {
                                 }}>
                                     <div style={{
                                         width: '60px', height: '60px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.8)',
-                                        border: '1px solid var(--accent)',
+                                        border: '2px solid var(--accent)',
                                         color: 'var(--accent)',
                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                        fontSize: '1.2rem', fontFamily: 'var(--font-sans)', flexShrink: 0
+                                        fontSize: '1.4rem', fontFamily: 'var(--font-sans)', fontWeight: 'bold', flexShrink: 0
                                     }}>
                                         {step.num}
                                     </div>
@@ -190,11 +195,13 @@ export const Service: React.FC = () => {
             </div>
 
             {/* Pricing */}
-            <div style={{ backgroundColor: '#FDFBF8' }}>
+            <div style={{ backgroundColor: '#FDFBF8' }} className="diagonal-separator-white">
                 <section className="section-wrapper">
                     <div style={{ textAlign: 'center', marginBottom: '60px' }}>
                         <h2 className="heading-xxl" style={{ fontSize: '2.5rem' }}>料金プラン</h2>
-                        <p style={{ color: 'var(--text-sub)' }}>ベースプランと、必要な分だけ追加できるオプション。</p>
+                        <p style={{ color: 'var(--text-sub)' }}>
+                            ベースプランと、必要な分だけ追加できるオプション。
+                        </p>
                     </div>
 
                     <div className="grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px', maxWidth: '900px', margin: '0 auto' }}>
@@ -225,11 +232,7 @@ export const Service: React.FC = () => {
                                     }}>RECOMMENDED</div>
                                 )}
                                 <h3 style={{ fontSize: '1.5rem', fontFamily: 'var(--font-rounded)', marginBottom: '1rem', textAlign: 'center' }}>{plan.name}</h3>
-                                {plan.name === 'オプション' ? (
-                                    <div style={{ fontSize: '1.1rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem', color: 'var(--text-main)', minHeight: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        必要なものを自由にプラス
-                                    </div>
-                                ) : (
+                                {plan.name !== 'オプション' && (
                                     <div style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem', color: 'var(--text-main)' }}>
                                         <span style={{ fontSize: '1rem', fontWeight: 400, marginRight: '4px' }}>¥</span>{plan.price}
                                     </div>
@@ -238,32 +241,33 @@ export const Service: React.FC = () => {
                                 <ul style={{ marginBottom: '2rem', flexGrow: 1 }}>
                                     {plan.features.map((feature, idx) => (
                                         <li key={idx} style={{ display: 'flex', gap: '10px', marginBottom: '10px', fontSize: '0.95rem', color: 'var(--text-sub)' }}>
-                                            <Check size={18} color="var(--accent)" style={{ flexShrink: 0 }} />
+                                            <div style={{ width: '18px', display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
+                                                {feature !== "..." && <Check size={18} color="var(--accent)" />}
+                                            </div>
                                             {feature}
                                         </li>
                                     ))}
                                 </ul>
                                 {plan.name === '基本料金' && (
                                     <div style={{
-                                        backgroundColor: '#fff8d7',
-                                        padding: '15px',
-                                        borderRadius: '8px',
-                                        marginBottom: '0',
+                                        marginTop: '1.5rem',
+                                        paddingTop: '1.5rem',
+                                        borderTop: '1px dashed #e0e0e0',
                                         textAlign: 'center'
                                     }}>
                                         <p style={{ fontSize: '0.85rem', color: 'var(--accent)', fontWeight: 'bold', marginBottom: '8px' }}>
-                                            ご利用後のアンケート回答で<br />4,000円OFF
+                                            \ アンケート回答で /
                                         </p>
                                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: 'var(--text-main)', flexWrap: 'wrap' }}>
-                                            <span style={{ textDecoration: 'line-through double', color: 'var(--text-sub)', fontSize: '1.1rem' }}>¥30,000</span>
+                                            <span style={{ textDecoration: 'line-through', color: '#bbb', fontSize: '1rem' }}>¥30,000</span>
                                             <span style={{ fontSize: '1.2rem', color: 'var(--accent)' }}>→</span>
-                                            <span style={{ fontSize: '1.6rem', fontWeight: 700 }}>
+                                            <span className="marker-orange" style={{ fontSize: '1.5rem', fontWeight: 700 }}>
                                                 <span style={{ fontSize: '1rem', marginRight: '2px' }}>¥</span>26,000
                                             </span>
                                         </div>
-                                        <p style={{ fontSize: '0.75rem', marginTop: '15px', color: 'var(--text-sub)', textAlign: 'left', lineHeight: '1.6' }}>
-                                            ※アンケートの回答に同意していただいた方のみ対象です。<br />
-                                            ホームページ納品後にアンケートフォームのリンクをお送りいたします。
+                                        <p style={{ fontSize: '0.75rem', marginTop: '10px', color: '#999', textAlign: 'left', lineHeight: '1.6' }}>
+                                            ※アンケートの回答にご協力いただける方が対象です。<br />
+                                            (納品後にフォームをお送りいたします)
                                         </p>
                                     </div>
                                 )}
@@ -271,6 +275,12 @@ export const Service: React.FC = () => {
                         ))}
                     </div>
 
+                    <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                        <p style={{ fontSize: '0.8rem', color: 'var(--text-sub)', lineHeight: '1.6' }}>
+                            ※金額は全て税込表記です<br />
+                            ※料金は今後、内容や状況に応じて見直す場合があります
+                        </p>
+                    </div>
                     <div style={{
                         margin: '60px auto 0',
                         maxWidth: '900px',
@@ -281,22 +291,41 @@ export const Service: React.FC = () => {
                         gap: '40px'
                     }}>
                         <div style={{
-                            flex: '1 1 400px',
-                            backgroundColor: '#fff8d7',
-                            padding: '40px',
-                            borderRadius: '8px'
+                            flex: '1 1 500px',
+                            padding: '10px'
                         }}>
-                            <h3 style={{ fontFamily: 'var(--font-rounded)', fontSize: '1.2rem', marginBottom: '20px', textAlign: 'center' }}>サービスの前提</h3>
-                            <div className="split-2" style={{ gap: '20px' }}>
-                                <ul style={{ listStyle: 'none', fontSize: '0.95rem' }}>
-                                    <li style={{ marginBottom: '8px' }}>・ドメイン・サーバーはご依頼者様名義となります</li>
-                                    <li style={{ marginBottom: '8px' }}>・納品後の運用はご依頼者様にお願いしております</li>
+                            <h3 style={{
+                                fontFamily: 'var(--font-rounded)',
+                                fontSize: '1.2rem',
+                                marginBottom: '25px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px'
+                            }}>
+                                <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--accent)' }}></span>
+                                サービスの前提
+                            </h3>
+                            <div className="split-2" style={{ gap: '30px' }}>
+                                <ul style={{ listStyle: 'none', fontSize: '0.95rem', color: 'var(--text-sub)' }}>
+                                    {[
+                                        "ドメイン・サーバーはご依頼者様名義となります",
+                                        "納品後の運用はご依頼者様にお願いしております"
+                                    ].map((item, i) => (
+                                        <li key={i} style={{ marginBottom: '12px', paddingLeft: '1em', textIndent: '-1em', lineHeight: 1.6 }}>
+                                            <span style={{ color: '#ccc', marginRight: '8px' }}>•</span>{item}
+                                        </li>
+                                    ))}
                                 </ul>
-                                <ul style={{ listStyle: 'none', fontSize: '0.95rem' }}>
-                                    <li style={{ marginBottom: '8px' }}>・原稿が揃ってからの制作開始となります</li>
-                                    <li style={{ marginBottom: '8px' }}>・規定回数を超える修正は追加費用となります</li>
-                                    <li style={{ marginBottom: '8px' }}>・ホームページ公開完了後の修正は有料となります</li>
-                                    <li style={{ marginBottom: '8px' }}>・軽微な修正など、再度依頼される場合はLINEまたはお問い合わせフォームよりご連絡ください</li>
+                                <ul style={{ listStyle: 'none', fontSize: '0.95rem', color: 'var(--text-sub)' }}>
+                                    {[
+                                        "規定回数を超える修正は追加費用となります",
+                                        "ホームページ公開完了後の修正は修正回数が上限に達していなくても有料となります",
+                                        "軽微な修正など、再度依頼される場合はLINEまたはお問い合わせフォームよりご連絡ください"
+                                    ].map((item, i) => (
+                                        <li key={i} style={{ marginBottom: '12px', paddingLeft: '1em', textIndent: '-1em', lineHeight: 1.6 }}>
+                                            <span style={{ color: '#ccc', marginRight: '8px' }}>•</span>{item}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>

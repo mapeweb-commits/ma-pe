@@ -6,6 +6,7 @@ export const Contact: React.FC = () => {
         <div style={{ backgroundColor: '#FDFBF8' }}>
             <section className="section text-center" style={{ paddingTop: '120px', paddingBottom: '40px' }}>
                 <div className="container">
+                    <p style={{ letterSpacing: '0.2em', marginBottom: '20px', color: 'var(--accent)', fontSize: '0.9rem', fontWeight: 700 }}>CONTACT</p>
                     <h1 className="heading-lg">無料相談</h1>
                 </div>
             </section>
@@ -39,7 +40,9 @@ export const Contact: React.FC = () => {
                                 border: 'none'
                             }}
                         >
-                            お問い合わせフォームへ
+                            <span style={{ textAlign: 'center' }}>
+                                お問い合わせ<br />フォームへ
+                            </span>
                             <ExternalLink size={18} />
                         </a>
 
@@ -65,7 +68,9 @@ export const Contact: React.FC = () => {
                                 border: 'none'
                             }}
                         >
-                            LINE公式アカウントへ
+                            <span style={{ textAlign: 'center' }}>
+                                LINE公式<br />アカウントへ
+                            </span>
                             <ExternalLink size={18} />
                         </a>
 

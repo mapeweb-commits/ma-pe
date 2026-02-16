@@ -4,7 +4,7 @@
   --bg-color: #FDFBF8;
   --text-main: #432F2F;
   --text-sub: #888078;
-  --accent: #D09166;
+  --accent: #e4854c;
   --white: #FFFFFF;
 
   --font-serif: 'Shippori Mincho', serif;
@@ -254,7 +254,7 @@ a:hover {
   content: "0" counter(num);
   font-family: var(--font-sans);
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--accent);
 }
 
@@ -379,13 +379,23 @@ a:hover {
   }
 }
 
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Hero Section Specifics */
 .hero-image-container {
   position: absolute;
   bottom: 0;
   right: -5%;
   width: 60vw;
-  max-width: 1000px;
   z-index: 0;
   pointer-events: none;
   display: flex;
@@ -396,7 +406,6 @@ a:hover {
 .hero-image {
   width: 100%;
   height: auto;
-  max-height: 85vh;
   object-fit: contain;
   opacity: 1;
   display: block;
@@ -418,7 +427,7 @@ a:hover {
   .hero-image {
     max-height: none;
     margin-bottom: 0;
-    width: 90%;
+    width: 100%;
     margin-left: auto;
   }
 
@@ -426,6 +435,55 @@ a:hover {
   .hero-content-wrapper {
     max-width: 100% !important;
   }
+
+  @keyframes blob-bounce {
+    0% {
+      transform: translate(0, 0) scale(1);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    50% {
+      transform: translate(-10px, -20px) scale(1.05);
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+
+    100% {
+      transform: translate(0, 0) scale(1);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+  }
+
+  .hero-mobile-bg-1 {
+    position: absolute;
+    top: 10%;
+    right: -20%;
+    width: 320px;
+    height: 320px;
+    background-color: #ffe082;
+    z-index: 0;
+    opacity: 0.6;
+    animation: blob-bounce 8s ease-in-out infinite;
+  }
+
+  .hero-mobile-bg-2 {
+    position: absolute;
+    bottom: 10%;
+    left: -15%;
+    width: 200px;
+    height: 200px;
+    background-color: #ffd54f;
+    z-index: 0;
+    opacity: 0.5;
+    animation: blob-bounce 7s ease-in-out infinite reverse;
+    animation-delay: -2s;
+  }
+}
+
+/* Marker */
+.marker-orange {
+  background: linear-gradient(transparent 60%, rgba(255, 165, 0, 0.4) 60%);
+  display: inline-block;
+  padding: 0 4px;
 }
 
 /* Footer */
@@ -512,5 +570,71 @@ a:hover {
   .number-item h3 {
     font-size: 1rem !important;
     margin-top: 0 !important;
+  }
+}
+
+/* Diagonal Separators */
+.diagonal-separator-white {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 5vw;
+  /* Ensure space for the separator */
+}
+
+.diagonal-separator-white::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5vw;
+  min-height: 60px;
+  background-color: var(--white);
+  clip-path: polygon(0% 100%, 100% 0%, 100% 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Beige section slanted */
+.diagonal-separator-beige {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 5vw;
+}
+
+.diagonal-separator-beige::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5vw;
+  min-height: 60px;
+  background-color: var(--bg-color);
+  /* #FDFBF8 */
+  clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+
+  .diagonal-separator-white::after,
+  .diagonal-separator-beige::after {
+    height: 8vw;
+    min-height: 30px;
+  }
+
+  /* Fix for top spacing on mobile service page */
+  .section-wrapper.full-screen+.diagonal-separator-white {
+    margin-top: -40px;
+    padding-top: 40px;
+  }
+}
+
+/* Scope Section Mobile Spacing */
+@media (max-width: 768px) {
+  .scope-section {
+    padding-top: 20px !important;
   }
 }

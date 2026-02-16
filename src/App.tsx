@@ -4,6 +4,8 @@ import { Home } from './pages/Home';
 import { Service } from './pages/Service';
 import { Sample } from './pages/Sample';
 import { Contact } from './pages/Contact';
+import { Legal } from './pages/Legal';
+import { Privacy } from './pages/Privacy';
 import { ScrollToTop } from './components/ScrollToTop';
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
           <Route path="service" element={<Service />} />
           <Route path="sample" element={<Sample />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="legal" element={<Legal />} />
+          <Route path="privacy" element={<Privacy />} />
         </Route>
       </Routes>
     </BrowserRouter>

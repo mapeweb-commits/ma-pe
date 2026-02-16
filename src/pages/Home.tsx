@@ -3,6 +3,39 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Accordion } from '../components/Accordion';
 
+const FadeInItem: React.FC<{ children: React.ReactNode; delay: string }> = ({ children, delay }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div
+            ref={ref}
+            className={`feature-card fade-in-up ${isVisible ? 'is-visible' : ''}`}
+            style={{ transitionDelay: delay }}
+        >
+            {children}
+        </div>
+    );
+};
+
 export const Home: React.FC = () => {
     const [isProblemsVisible, setIsProblemsVisible] = useState(false);
     const problemsRef = useRef<HTMLDivElement>(null);
@@ -28,6 +61,8 @@ export const Home: React.FC = () => {
         <>
             {/* Hero Section */}
             <section className="section-wrapper full-screen" style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#FDFBF8' }}>
+                <div className="hero-mobile-bg-1"></div>
+                <div className="hero-mobile-bg-2"></div>
                 <div className="hero-content-wrapper" style={{ maxWidth: '800px', position: 'relative', zIndex: 10 }}>
                     <p style={{
                         letterSpacing: '0.2em',
@@ -120,11 +155,10 @@ export const Home: React.FC = () => {
             </div>
 
             {/* Promise Section */}
-            {/* Promise Section */}
             <div style={{ backgroundColor: '#fff' }}>
                 <section className="section-wrapper">
                     <div style={{ marginBottom: '80px' }}>
-                        <span style={{ color: 'var(--accent)', letterSpacing: '0.2em', display: 'block', marginBottom: '10px' }}>PROMISE</span>
+                        <span style={{ color: 'var(--accent)', letterSpacing: '0.2em', display: 'block', marginBottom: '10px', fontWeight: 'bold' }}>PROMISE</span>
                         <h2 style={{ fontSize: '2.5rem' }}>まーぺの約束</h2>
                     </div>
 
@@ -146,14 +180,14 @@ export const Home: React.FC = () => {
                                 desc: "サーバー代・ドメイン代基本０円。更新しなくても困らない形にまとめます。"
                             }
                         ].map((item, i) => (
-                            <div key={i} className="feature-card">
+                            <FadeInItem key={i} delay={`${i * 0.2}s`}>
                                 <div style={{
                                     color: 'var(--accent)',
                                     marginBottom: '20px',
                                     width: '110px',
                                     height: '110px',
                                     borderRadius: '50%',
-                                    backgroundColor: 'var(--text-main)',
+                                    backgroundColor: '#e4854c',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyItems: 'center',
@@ -161,7 +195,7 @@ export const Home: React.FC = () => {
                                 }}>{item.icon}</div>
                                 <h3 style={{ fontSize: '1.5rem', marginBottom: '16px' }}>{item.title}</h3>
                                 <p style={{ color: 'var(--text-sub)', fontSize: '0.95rem' }}>{item.desc}</p>
-                            </div>
+                            </FadeInItem>
                         ))}
                     </div>
                 </section>
@@ -182,14 +216,14 @@ export const Home: React.FC = () => {
                             </Link>
                         </div>
 
-                        <div style={{ backgroundColor: '#e4854c', padding: '60px', borderRadius: '4px', color: 'white' }}>
+                        <div style={{ backgroundColor: '#432F2F', padding: '60px', borderRadius: '4px', color: 'white' }}>
                             <h2 style={{ fontSize: '1.8rem', marginBottom: '20px' }}>
                                 まずは<br />ご相談ください
                             </h2>
                             <p style={{ marginBottom: '30px' }}>
                                 LINEまたはお問い合わせフォームよりご連絡いただけます。
                             </p>
-                            <Link to="/contact" className="cta-btn" style={{ display: 'inline-block', backgroundColor: 'white', color: '#e4854c', fontWeight: 'bold', padding: '16px 60px', border: 'none', borderRadius: '8px' }}>
+                            <Link to="/contact" className="cta-btn" style={{ display: 'inline-block', backgroundColor: 'white', color: '#432F2F', fontWeight: 'bold', padding: '16px 40px', border: 'none', borderRadius: '8px', whiteSpace: 'nowrap' }}>
                                 無料で相談する
                             </Link>
                         </div>
@@ -197,8 +231,6 @@ export const Home: React.FC = () => {
                 </section>
             </div>
 
-            {/* FAQ */}
-            {/* FAQ */}
             {/* FAQ */}
             <div style={{ backgroundColor: '#fff' }}>
                 <section className="section-wrapper">
@@ -213,7 +245,7 @@ export const Home: React.FC = () => {
                                     answer: "「Netlify（ネットリファイ）」という、世界中で使われている高機能かつ無料枠のあるホスティングサービスを利用しているためです。（※独自ドメインをご希望の場合のみ、その実費が必要です）"
                                 },
                                 {
-                                    question: "文章や画像が用意できない場合は？",
+                                    question: "文章や画像が用意できなくても大丈夫ですか？",
                                     answer: "まずはご相談ください（簡単なヒアリングから作成をお手伝いいたします）。"
                                 },
                                 {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
     return (
@@ -18,9 +19,8 @@ export const Footer: React.FC = () => {
 
                 <div className="footer-bottom">
                     <div style={{ display: 'flex', gap: '1rem' }}>
-                        {/* Note: Legal and Privacy links are placeholders as per instructions */}
-                        <span style={{ cursor: 'not-allowed', opacity: 0.5 }}>特定商取引法に基づく表記</span>
-                        <span style={{ cursor: 'not-allowed', opacity: 0.5 }}>プライバシーポリシー</span>
+                        <Link to="/legal" style={{ opacity: 0.8 }}>特定商取引法に基づく表記</Link>
+                        <Link to="/privacy" style={{ opacity: 0.8 }}>プライバシーポリシー</Link>
                     </div>
                     <p>Copyright © ma-pe. All Rights Reserved.</p>
                 </div>
